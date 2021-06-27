@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-6 m-auto">
+  <div class="card m-auto">
+    <div class="card-header">
+      Register
+    </div>
+    <div class="card-body">
+      <br>
+<form [formGroup]="registerForm" (ngSubmit)="OnSubmit()">
+       <div class="form-group col-12">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" formControlName="userName">
+            <div class="alert alert-danger" *ngIf="f.userName.invalid && (f.userName.dirty || f.userName.touched)">
+              <span *ngIf="f.userName.errors.required">Name is required</span>
+            </div>
+        </div>
+
+        <div class="form-group col-12">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" class="form-control" formControlName="emailID">
+          <div class="alert alert-danger" *ngIf="f.emailID.invalid && (f.emailID.dirty || f.emailID.touched)">
+              <div *ngIf="f.emailID.errors.required">Email is required</div>
+              <div *ngIf="f.emailID.errors.email">Email must be a valid email address</div>
+            </div>
+        </div>
+
+        <div class="form-group col-12">
+          <label for="passwrod" class="form-label">Password</label>
+          <input type="text" class="form-control" formControlName="txtPassword">
+          <div class="alert alert-danger" *ngIf="f.txtPassword.invalid && (f.txtPassword.dirty || f.txtPassword.touched)">
+            <div *ngIf="f.txtPassword.errors.required">Password is required</div>
+            <div *ngIf="f.txtPassword.errors.minlength">Password must be at least 6 characters</div>
+          </div>
+        </div>
+
+        <div class="form-group col-12">
+          <label for="cpassword" class="form-label">Confirm Password</label>
+          <input type="text" class="form-control" formControlName="txtConfirmPassword">
+          <div class="alert alert-danger" *ngIf="f.txtConfirmPassword.invalid && (f.txtConfirmPassword.dirty || f.txtConfirmPassword.touched)">
+              <div *ngIf="f.txtConfirmPassword.errors.required">Confirm Password is required</div>
+              <div *ngIf="f.txtConfirmPassword.errors.mustMatch">Passwords must match</div>
+          </div>
+        </div>
+
+        <div class="form-group col-12">
+          <label for="mobile" class="form-label">Mobile</label>
+          <input type="text" class="form-control" formControlName="txtMobile">
+        </div>
+
+        <div class="form-group col-12">
+          <button type="submit" class="btn btn-primary m-3">Save</button>
+          <button type="reset" class="btn btn-secondary ml-2">Cancel</button>
+        </div>
+        <!-- form vlues : {{registerForm.value | json}} <br/>
+        form status : {{registerForm.valid | json}} -->
+      </form>
+    </div>
+  </div>
+  </div>
+</div>
